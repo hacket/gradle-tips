@@ -36,7 +36,7 @@ org.gradle.parallel=true
 org.gradle.configureondemand=true
 ```
 ###1.1跳过lint检测
-https://medium.com/the-engineering-team/speeding-up-gradle-builds-619c442113cb#.q8lxekppo
+
 ```groovy
 tasks.whenTaskAdded { task ->
     if (task.name.equals("lint")) {
@@ -58,24 +58,27 @@ dexOptions {
 
 这是官方的速度对比，据说下一代编译速度更快
 
-###3、使用Gradle 2.4
-Gradle 2.4对执行性能有很大的优化，但Android Studio现在默认使用的是Gradle 2.2,
-所以我们需要手动让Android Studio使用Gradle 2.4，在项目根目录下的 build.grade中加入
+###3、使用最新的Gradle
+Gradle对执行性能有很大的优化，但Android Studio现在默认使用的是Gradle 2.2,
+所以我们需要手动让Android Studio使用Gradle，在项目根目录下的 build.grade中加入，如加入2.8
 
 ```
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
+    gradleVersion = '2.8'
 }
 
 ```
 
-然后打开终端执行 ./gradlew wrapper，就可以下载Gradle 2.4了，下载完成后，我们需要在Android Studio让我们的项目使用Gradle 2.4。
+然后打开终端执行 ./gradlew wrapper，就可以下载Gradle 2.8了，下载完成后，我们需要在Android Studio让我们的项目使用Gradle 2.8。
+
+注意gradle和android gradle for android plugin[版本对应](http://tools.android.com/tech-docs/new-build-system/version-compatibility)
 
 ###4、as配置
-![](index_files/029f9c69-66ef-48c6-b641-cb27ec3c6102.png)
+![](https://github.com/hacket/gradle-config/blob/master/%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config1.png)
 
-![](index_files/2f4e4927-8750-4777-b1ed-371d1646a380.png)
-
-
+![](https://github.com/hacket/gradle-config/blob/master/%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config2.png)
 
 
+###Reference
+ 1. https://medium.com/the-engineering-team/speeding-up-gradle-builds-619c442113cb#.ng7ym9n50
+ 2. http://tools.android.com/tech-docs/new-build-system/version-compatibility
