@@ -1,5 +1,4 @@
-# gradle-config
-实用的gradle配置
+### 实用的gradle配置
 
 
 
