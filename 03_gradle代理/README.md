@@ -1,9 +1,9 @@
 
-####gradle´úÀí
+###gradleä»£ç†
 
-**Èç¹û³öÏÖ Connection to https://jcenter.bintray.com refused´íÎó£¬ĞèÒª¹Ò´úÀí**
+> æˆ‘ä»¬ç»å¸¸ä¼šé‡åˆ°ï¼Œå‡ºç°gradleç¼–è¯‘æ—¶å‡ºç°Connection to https://jcenter.bintray.com refusedé”™è¯¯ï¼Œæ— æ³•è¿æ¥åˆ°jcenteræœåŠ¡å™¨ï¼Œè¿™æ—¶éœ€è¦æŒ‚ä»£ç†
 
-**ÎªgradleÅäÖÃ´úÀí£¬gradle.propertiesÎÄ¼ş¼ÓÉÏÏÂÃæ¼¸¾ä£º**
+1. ä¸ºgradleé…ç½®ä»£ç†ï¼Œgradle.propertiesæ–‡ä»¶åŠ ä¸Šä¸‹é¢å‡ å¥ï¼š
 
 ```java
 systemProp.https.proxyPort=1080
@@ -12,6 +12,6 @@ systemProp.https.proxyHost=172.18.188.42
 systemProp.http.proxyPort=1080
 ```
 
-####Reference
+2. Reference
 [Accessing the web via a proxy](https://docs.gradle.org/current/userguide/userguide_single.html#sec%3aaccessing_the_web_via_a_proxy)
 
