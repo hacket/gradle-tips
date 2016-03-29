@@ -74,9 +74,9 @@ task wrapper(type: Wrapper) {
 注意gradle和android gradle for android plugin[版本对应](http://tools.android.com/tech-docs/new-build-system/version-compatibility)
 
 ###4、as配置
-![](https://github.com/hacket/gradle-config/blob/master/%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config1.png)
+![](https://github.com/hacket/gradle-config/tree/master/01_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config1.png)
 
-![](https://github.com/hacket/gradle-config/blob/master/%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config2.png)
+![](https://github.com/hacket/gradle-config/tree/master/01_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config2.png)
 
 
 ###Reference
