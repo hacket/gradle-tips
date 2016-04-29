@@ -1,6 +1,7 @@
 ### 实用的gradle技巧
 
-**1.自定义gradle属性**
+**1.[自定义gradle属性](https://github.com/hacket/gradle-config/tree/master/01_%E8%87%AA%E5%AE%9A%E4%B9%89gradle%E5%B1%9E
+%E6%80%A7 "https://github.com/hacket/gradle-config/tree/master/01_%E8%87%AA%E5%AE%9A%E4%B9%89gradle%E5%B1%9E%E6%80%A7")**
 
 **2. [gradle自带变量和引用属性值](https://github.com/hacket/gradle-config/tree/master/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC "https://github.com/hacket/gradle-config/tree/master/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC")**
 
