@@ -10,6 +10,8 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -29,15 +31,15 @@ android {
 
 }
 
-//tasks.whenTaskAdded { task ->
-//    if (task.name.equals("lint")) {
-//        task.enabled = false
-//    }
-//}
+tasks.whenTaskAdded { task ->
+    if (task.name.equals("lint")) {
+        task.enabled = false
+    }
+}
 
-//task wrapper(type: Wrapper) {
-//    gradleVersion = '2.8'
-//}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,4 +48,5 @@ dependencies {
     compile rootProject.ext.dependencies['design']
     compile rootProject.ext.dependencies['recyclerview-v7']
     compile rootProject.ext.dependencies['butterknife']
+    compile rootProject.ext.dependencies['multidex']
 }
