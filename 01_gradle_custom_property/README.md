@@ -1,7 +1,7 @@
 
-### 自定义gradle属性
+# 自定义gradle属性
 
-#### 1、在根目录建立config.gradle文件，定义全局通用的变量
+## 1、在根目录建立config.gradle文件，定义全局通用的变量
 ```groovy
 //全局定义gradle配置
 ext {
@@ -35,13 +35,13 @@ ext {
 }
 ```
 
-#### 2、引入config.gradle文件
+## 2、引入config.gradle文件
 在根目录的`build.gradle`中引入，其他module就都可以用了
 ```groovy
 apply from: "$rootDir/config.gradle"
 ```
 
-####3、引用变量
+## 3、引用变量
 ```groovy
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion

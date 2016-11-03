@@ -1,6 +1,6 @@
-###Gradle依赖的统一管理
+# Gradle依赖的统一管理
 
-####1、 在项目根目录添加config.gradle
+## 1、 在项目根目录添加config.gradle
 
 ```groovy
 // 全局配置的gradle
@@ -31,7 +31,7 @@ ext {
                     "etsy-grid"                : 'com.etsy.android.grid:library:1.0.5']
 }
 ```
-####2、 在项目根目录的build.gradle全局apply config.gradle，在其他module中不需要导入了，直接使用
+## 2、 在项目根目录的build.gradle全局apply config.gradle，在其他module中不需要导入了，直接使用
 
 ```groovy
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -55,7 +55,7 @@ allprojects {
     }
 }
 ```
-####3、使用config.gradle配置
+## 3、使用config.gradle配置
 * application使用 `app/build.gradle` 
 
 ```groovy

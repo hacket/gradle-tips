@@ -1,4 +1,6 @@
-###1、使用多线程编译
+# 加速Gradle编译
+
+## 1、使用多线程编译
 在gradle.properties，开启gradle单独的守护进程
 
 同时这些参数也可以配置到前面的用户目录下的gradle.properties文件里，那样就不是针对一个项目生效，而是针对所有项目生效。
@@ -35,7 +37,7 @@ org.gradle.parallel=true
 # http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:configuration_on_demand
 org.gradle.configureondemand=true
 ```
-###1.1跳过lint检测
+### 1.1跳过lint检测
 
 ```groovy
 tasks.whenTaskAdded { task ->
@@ -45,7 +47,7 @@ tasks.whenTaskAdded { task ->
 }
 ```
 
-###2、打开dex增量编译
+## 2、打开dex增量编译
 这还是一个实验性的功能，但是还是推荐打开试试
 在项目主Module下build.grade的Android中加入
 
@@ -58,7 +60,7 @@ dexOptions {
 
 这是官方的速度对比，据说下一代编译速度更快
 
-###3、使用最新的Gradle
+## 3、使用最新的Gradle
 Gradle对执行性能有很大的优化，但Android Studio现在默认使用的是Gradle 2.2,
 所以我们需要手动让Android Studio使用Gradle，在项目根目录下的 build.grade中加入，如加入2.8
 
@@ -73,12 +75,12 @@ task wrapper(type: Wrapper) {
 
 注意gradle和android gradle for android plugin[版本对应](http://tools.android.com/tech-docs/new-build-system/version-compatibility)
 
-###4、as配置
+## 4、as配置
 ![](https://github.com/hacket/gradle-config/blob/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config1.png)
 
 ![](https://github.com/hacket/gradle-config/blob/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91/img/gradle_config2.png)
 
 
-###Reference
+## Reference
  1. https://medium.com/the-engineering-team/speeding-up-gradle-builds-619c442113cb#.ng7ym9n50
  2. http://tools.android.com/tech-docs/new-build-system/version-compatibility

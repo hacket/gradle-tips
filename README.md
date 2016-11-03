@@ -1,4 +1,6 @@
-### 实用的gradle技巧
+# Gradle Tips
+
+## 实用的Gradle技巧
 
 **1.[自定义gradle属性](https://github.com/hacket/gradle-config/tree/master/01_gradle_custom_property  "https://github.com/hacket/gradle-config/tree/master/01_gradle_custom_property")**
 
@@ -17,4 +19,6 @@
 **6. [加速gradle编译](https://github.com/hacket/gradle-config/tree/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91 "https://github.com/hacket/gradle-config/tree/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91")**
 
 
-> 所有资源来源于网络,版权归原作者所有
+## Gradle插件
+
+### pgyer_dingtalk

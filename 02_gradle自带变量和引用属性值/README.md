@@ -1,6 +1,6 @@
-### 引用自带变量和引用属性值
+# 引用自带变量和引用属性值
 
-#### Project可用的标准属性
+## Project可用的标准属性
 ```groovy
 println "name-->" + name  // app   --项目目录
 println "project-->" + project // project ':app'   -- project实例
@@ -12,7 +12,7 @@ println "project.buildDir-->" + project.buildDir // D:\workspace_studio\gradle-c
 println "project.ant-->" + project.ant // org.gradle.api.internal.project.DefaultAntBuilder@372f10ce  --AntBuilder实例
 ```
 
-#### Android for gradle自带变量
+## Android for gradle自带变量
 ```groovy
 println '[rootDir]' + rootDir // D:\workspace_studio\gradle-config
 println '[buildDir]' + buildDir  // D:\workspace_studio\gradle-config\app\build
@@ -22,7 +22,7 @@ println '[project]' + project.getName(); // app
 println '[rootProject]' + rootProject // root project 'gradle-config'
 ```
 
-#### 引用配置文件里的变量
+## 引用配置文件里的变量
 ```groovy
 // 使用 project.hasProperty('sdk.dir') 判断key值是否存在
 println '[sdk.dir]:' + project.hasProperty("sdk.dir") // true

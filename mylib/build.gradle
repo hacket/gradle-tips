@@ -17,11 +17,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile rootProject.ext.dependencies['appcompat-v7']
-    compile rootProject.ext.dependencies['butterknife']
-    compile rootProject.ext.dependencies['glide']
-    compile rootProject.ext.dependencies['glide-okhttp-integration']
+    implementation rootProject.ext.dependencies['appcompat-v7']
+    implementation rootProject.ext.dependencies['butterknife']
+    implementation rootProject.ext.dependencies['glide']
+    implementation rootProject.ext.dependencies['glide-okhttp-integration']
 
 }
