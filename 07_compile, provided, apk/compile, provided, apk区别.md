@@ -1,31 +1,31 @@
-### 1¡¢compile,?provided,?apk
-ÔÚ`File¡úProject?Structure¡úDependencies`¿ÉÅäÖÃ
+###Â 1ã€compile,Â provided,Â apk
+åœ¨`Fileâ†’ProjectÂ Structureâ†’Dependencies`å¯é…ç½®
 http://stackoverflow.com/questions/28472785/compile-provided-apk-android-dependency-scope
 
-#### compile?²ÎÓë±àÒëºÍ´ò°ü
-1.**compile**
-???ËùÓĞµÄ*build_type*ÒÔ¼°*flavors*²ÎÓë±àÒë²¢ÇÒ´ò°üµÄapkÖĞÈ¥¡£ÔËĞĞÊ±ĞèÒª¡£
-*?`compile?fileTree(include:?'*.jar',?dir:?'libs')`??±àÒë´ò°ülibsÏÂËùÓĞµÄjar°ü
-*?`compile?files('libs/picasso-2.4.0.jar')`?±àÒë´ò°üpicasso-2.4.0.jar°ü
-*?`compile?project(':common')`?±àÒë´ò°ücommon?module
+####Â compileÂ å‚ä¸ç¼–è¯‘å’Œæ‰“åŒ…
+1.Â **compile**
+Â Â Â æ‰€æœ‰çš„*build_type*ä»¥åŠ*flavors*å‚ä¸ç¼–è¯‘å¹¶ä¸”æ‰“åŒ…çš„apkä¸­å»ã€‚è¿è¡Œæ—¶éœ€è¦ã€‚
+*Â `compileÂ fileTree(include:Â '*.jar',Â dir:Â 'libs')`Â Â ç¼–è¯‘æ‰“åŒ…libsä¸‹æ‰€æœ‰çš„jaråŒ…
+*Â `compileÂ files('libs/picasso-2.4.0.jar')`Â ç¼–è¯‘æ‰“åŒ…picasso-2.4.0.jaråŒ…
+*Â `compileÂ project(':common')`Â ç¼–è¯‘æ‰“åŒ…commonÂ module
 
-1.?**debugCompile**
-???ËùÓĞdebugµÄflavors²ÎÓë±àÒë²¢ÇÒ´ò°üµ½apkÖĞÈ¥
-
-
-2.?**releaseCompile**
-???ËùÓĞreleaseµÄflavors²ÎÓë±àÒë²¢ÇÒ´ò°üµ½apkÖĞÈ¥
+1.Â **debugCompile**
+Â Â Â æ‰€æœ‰debugçš„flavorså‚ä¸ç¼–è¯‘å¹¶ä¸”æ‰“åŒ…åˆ°apkä¸­å»
 
 
-3.?**testCompile**
-???½ö½öÊÇÕë¶Ôµ¥Ôª²âÊÔ´úÂëµÄ±àÒë±àÒëÒÔ¼°×îÖÕ´ò°ü²âÊÔapkÊ±ÓĞĞ§£¬¶ø¶ÔÕı³£µÄdebug»òÕßrelease?apk°ü²»Æğ×÷ÓÃ¡£
+2.Â **releaseCompile**
+Â Â Â æ‰€æœ‰releaseçš„flavorså‚ä¸ç¼–è¯‘å¹¶ä¸”æ‰“åŒ…åˆ°apkä¸­å»
 
 
-4.?**xxxCompile**
-???ËùÓĞxxxµÄflavors²ÎÓë±àÒë²¢ÇÒ´ò°üµ½apkÖĞÈ¥,ÈçreleaseLogCompile
+3.Â **testCompile**
+Â Â Â ä»…ä»…æ˜¯é’ˆå¯¹å•å…ƒæµ‹è¯•ä»£ç çš„ç¼–è¯‘ç¼–è¯‘ä»¥åŠæœ€ç»ˆæ‰“åŒ…æµ‹è¯•apkæ—¶æœ‰æ•ˆï¼Œè€Œå¯¹æ­£å¸¸çš„debugæˆ–è€…releaseÂ apkåŒ…ä¸èµ·ä½œç”¨ã€‚
 
-####?provided?Ö»²ÎÓë±àÒë²»²ÎÓë´ò°ü
-ProvidedÊÇ¶ÔËùÓĞµÄbuild?typeÒÔ¼°favlorsÖ»ÔÚ±àÒëÊ±Ê¹ÓÃ£¬ÀàËÆeclipseÖĞµÄexternal-libs,Ö»²ÎÓë±àÒë£¬²»´ò°üµ½×îÖÕapk¡£
 
-####?apk?Ö»²ÎÓë´ò°ü²»²ÎÓë±àÒë
-Ö»»á´ò°üµ½apkÎÄ¼şÖĞ£¬¶ø²»²ÎÓë±àÒë£¬ËùÒÔ²»ÄÜÔÙ´úÂëÖĞÖ±½Óµ÷ÓÃjarÖĞµÄÀà»ò·½·¨£¬·ñÔòÔÚ±àÒëÊ±»á±¨´í¡£
+4.Â **xxxCompile**
+Â Â Â æ‰€æœ‰xxxçš„flavorså‚ä¸ç¼–è¯‘å¹¶ä¸”æ‰“åŒ…åˆ°apkä¸­å»,å¦‚releaseLogCompile
+
+####Â providedÂ åªå‚ä¸ç¼–è¯‘ä¸å‚ä¸æ‰“åŒ…
+Providedæ˜¯å¯¹æ‰€æœ‰çš„buildÂ typeä»¥åŠfavlorsåªåœ¨ç¼–è¯‘æ—¶ä½¿ç”¨ï¼Œç±»ä¼¼eclipseä¸­çš„external-libs,åªå‚ä¸ç¼–è¯‘ï¼Œä¸æ‰“åŒ…åˆ°æœ€ç»ˆapkã€‚
+
+####Â apkÂ åªå‚ä¸æ‰“åŒ…ä¸å‚ä¸ç¼–è¯‘
+åªä¼šæ‰“åŒ…åˆ°apkæ–‡ä»¶ä¸­ï¼Œè€Œä¸å‚ä¸ç¼–è¯‘ï¼Œæ‰€ä»¥ä¸èƒ½å†ä»£ç ä¸­ç›´æ¥è°ƒç”¨jarä¸­çš„ç±»æˆ–æ–¹æ³•ï¼Œå¦åˆ™åœ¨ç¼–è¯‘æ—¶ä¼šæŠ¥é”™
