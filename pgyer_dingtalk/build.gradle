@@ -1,0 +1,61 @@
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:4.1.3'
+
+
+    implementation 'org.json:json:20210307'
+    implementation 'commons-lang:commons-lang:2.6'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+}
+
+publishing {
+    publications {
+        Production(MavenPublication) {
+            from components.java
+            groupId = "qsbk.app"
+            artifactId = "pgyer_dingtalk"
+            version = "2.0.0"
+        }
+    }
+    repositories {
+//        mavenLocal()
+        maven {
+            url = "${rootDir}/repo"
+        }
+    }
+}
+
+//task javadocJar(type: Jar, dependsOn: groovydoc) {
+//    classifier = 'javadoc'
+//    from "${buildDir}/javadoc"
+//}
+//
+//task sourcesJar(type: Jar) {
+//    from sourceSets.main.allSource
+//    classifier = 'sources'
+//}
+//
+//artifacts {
+//    archives jar
+//    archives javadocJar
+//    archives sourcesJar
+//}

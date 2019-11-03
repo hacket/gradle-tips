@@ -22,3 +22,49 @@
 ## Gradle插件
 
 ### pgyer_dingtalk
+一键打包上传到蒲公英，并发送钉钉消息到群，极大地提升分发包的效率
+
+**特性：**
+1. 打包完毕后，上传包到蒲公英
+2. 发消息到钉钉，并支持@人
+3. 支持配合Jenkins，支持按包类型、分支、代理、@人及32位和64位等功能
+
+
+**使用：**
+```gradle
+apply plugin: 'dingPgyer'
+dingPgyerConfig {
+    pgyerApiKey = "xxx" // 蒲公英ApiKey
+    apiToken = "xxx" // 钉钉群机器人toekn
+    atMobiles = ['135xxx','136xxx'] // 群@人的手机号
+    enableByVariant = { variantName -> // 对哪些flavor开启
+        variantName.toLowerCase().contains("dev-preview") || variantName.toLowerCase().contains("product-release")
+    }
+    changeLog = "${getGitLog(5)}" // build log，获取前5条git log
+}
+/**
+ * 获取git log
+ * @param pre 多少条git log
+ * @return
+ */
+private String getGitLog(int pre) {
+    def diffLog = new StringBuffer()
+    def err = new StringBuffer()
+    def workspaceFile = rootDir
+
+    def gitChangeLogScript = new StringBuilder()
+    gitChangeLogScript.append("git log --no-merges --pretty=format:\"%s\" -${pre}")
+    println(gitChangeLogScript)
+    def changeLogProc = gitChangeLogScript.toString().execute(null, workspaceFile)
+    changeLogProc.waitForProcessOutput(diffLog, err)
+
+    def diffLogStr = diffLog.toString()
+    diffLogStr = diffLogStr.replaceAll("\"", "")
+    diffLogStr = diffLogStr.replaceAll("\n", "\n\n > ")
+
+    if (diffLogStr.length() > 1000) {
+        diffLogStr = diffLogStr.substring(0, 999)
+    }
+    return diffLogStr
+}
+```

@@ -1,1 +1,2 @@
 include ':app', ':mylib'
+include ':pgyer_dingtalk'
