@@ -68,3 +68,6 @@ private String getGitLog(int pre) {
     return diffLogStr
 }
 ```
+
+**效果图：**
+![dingtalk_pgyer](https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.png)
