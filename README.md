@@ -69,5 +69,5 @@ private String getGitLog(int pre) {
 }
 ```
 
-**效果图：**
-![dingtalk_pgyer](https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.png)
+**效果图：** <br/>
+![dingtalk_pgyer](https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.jpg)
