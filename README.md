@@ -70,4 +70,4 @@ private String getGitLog(int pre) {
 ```
 
 **效果图：** <br/>
-![dingtalk_pgyer](https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.jpg)
+<img src="https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.jpg" width="385px" height="928px">
