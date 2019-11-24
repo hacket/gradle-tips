@@ -17,7 +17,7 @@
 
 ## Gradle插件
 
-### pgyer_dingtalk
+### [pgyer_dingtalk](plugins/pgyer_dingtalk)
 一键打包上传到蒲公英，并发送钉钉消息到群，极大地提升分发包的效率
 
 **特性：**
@@ -69,7 +69,7 @@ private String getGitLog(int pre) {
 <img src="https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.jpg" width="385px" height="928px">
 
 
-### module_dependency_switch
+### [module_dependency_switch](plugins/switch_module_dependency)
 组件化过程中，module和aar切换
 
 配置`module_dependency.json`：
