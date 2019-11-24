@@ -1,0 +1,70 @@
+import groovy.json.JsonSlurper
+
+// 应用该文件的时候，执行该方法
+includeAndSwitchModuleDep()
+
+def includeAndSwitchModuleDep() {
+    try {
+        // module依赖的配置信息文件路径，json格式
+        def moduleDepConfigDir = "${rootDir}/plugins/switch_module_dependency/module_dependency.json"
+        // 解析json配置
+        def json = file(moduleDepConfigDir).getText()
+        def jsonSlurper = new JsonSlurper()
+        def objList = jsonSlurper.parseText(json)
+        println "--------------->>> objList=$objList"
+        // 遍历配置信息列表，找出 useModule==true 的模块，动态include
+        objList.forEach {
+            if (it.useModule) {
+                include ":${it.module_name}"
+                project(":${it.module_name}").projectDir = file(it.module_dir)
+            }
+        }
+        // aar依赖 与 module依赖 动态切换
+        switchToModuleDependency(objList)
+    } catch (Exception e) {
+        e.printStackTrace()
+    }
+}
+/**
+ * 切换到 module 依赖
+ * @param moduleDepList
+ */
+def switchToModuleDependency(List<Object> moduleDepList) {
+    gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
+
+        @Override
+        void beforeEvaluate(Project projectObj) {
+        }
+
+        @Override
+        void afterEvaluate(Project projectObj, ProjectState state) {
+            println "--------------->>> project name is $projectObj. \n" +
+                    "afterEvaluate project.configurations=${projectObj.configurations}"
+            if (projectObj.name != "app") {
+                return
+            }
+            switchModuleDep(projectObj, moduleDepList)
+        }
+    })
+}
+
+/**
+ * aar依赖 与 module依赖 动态切换
+ * @param projectObj project 对象
+ * @param moduleDepList module依赖配置信息列表
+ */
+def switchModuleDep(Project projectObj, List<Object> moduleDepList) {
+    println "--------------->>> project.rootProject.configurations=${projectObj.rootProject.configurations}. \n" +
+            "project.configurations=${projectObj.configurations}"
+    projectObj.configurations.all { Configuration ->
+        resolutionStrategy {
+            dependencySubstitution {
+                moduleDepList.forEach {
+                    if (it.useModule) {
+                        substitute module(it.module_group) with project(":${it.module_name}")
+                    }
+                }
+            }
+        }
+    }
+}

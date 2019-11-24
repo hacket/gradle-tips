@@ -1,2 +1,8 @@
 include ':app', ':mylib'
 include ':pgyer_dingtalk'
+
+try {
+    apply from: "$rootDir/plugins/switch_module_dependency/module_dependency.gradle"
+} catch (Exception e) {
+    e.printStackTrace()
+}

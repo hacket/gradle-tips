@@ -74,4 +74,7 @@ dependencies {
     implementation rootProject.ext.dependencies['recyclerview-v7']
     implementation rootProject.ext.dependencies['butterknife']
     implementation rootProject.ext.dependencies['multidex']
+
+    implementation 'me.hacket:Modularization1:1.0.0'
+    implementation 'me.hacket:Modularization2:1.0.0'
 }

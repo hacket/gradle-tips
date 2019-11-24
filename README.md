@@ -2,17 +2,17 @@
 
 ## 实用的Gradle技巧
 
-#### [自定义gradle属性](https://github.com/hacket/gradle-config/tree/master/01_gradle_custom_property  "https://github.com/hacket/gradle-config/tree/master/01_gradle_custom_property")
+#### [自定义gradle属性](https://github.com/hacket/gradle-config/tree/master/tips/01_gradle_custom_property  "https://github.com/hacket/gradle-config/tree/master/01_gradle_custom_property")
 
-### [gradle自带变量和引用属性值](https://github.com/hacket/gradle-config/tree/master/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC "https://github.com/hacket/gradle-config/tree/master/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC")
+### [gradle自带变量和引用属性值](https://github.com/hacket/gradle-config/tree/master/tips/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC "https://github.com/hacket/gradle-config/tree/master/02_gradle%E8%87%AA%E5%B8%A6%E5%8F%98%E9%87%8F%E5%92%8C%E5%BC%95%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC")
 
-### [gradle代理](https://github.com/hacket/gradle-config/tree/master/03_gradle%E4%BB%A3%E7%90%86 "https://github.com/hacket/gradle-config/tree/master/03_gradle%E4%BB%A3%E7%90%86")
+### [gradle代理](https://github.com/hacket/gradle-config/tree/master/tips/03_gradle%E4%BB%A3%E7%90%86 "https://github.com/hacket/gradle-config/tree/master/03_gradle%E4%BB%A3%E7%90%86")
 
-### [dex突破65535的限制](https://github.com/hacket/gradle-config/tree/master/04_dex%E7%AA%81%E7%A0%B465535%E7%9A%84%E9%99%90%E5%88%B6 "https://github.com/hacket/gradle-config/tree/master/04_dex%E7%AA%81%E7%A0%B465535%E7%9A%84%E9%99%90%E5%88%B6")
+### [dex突破65535的限制](https://github.com/hacket/gradle-config/tree/master/tips/04_dex%E7%AA%81%E7%A0%B465535%E7%9A%84%E9%99%90%E5%88%B6 "https://github.com/hacket/gradle-config/tree/master/04_dex%E7%AA%81%E7%A0%B465535%E7%9A%84%E9%99%90%E5%88%B6")
 
-### [gradle依赖的统一管理](https://github.com/hacket/gradle-config/tree/master/05_gradle%E4%BE%9D%E8%B5%96%E7%9A%84%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86 "https://github.com/hacket/gradle-config/tree/master/05_gradle%E4%BE%9D%E8%B5%96%E7%9A%84%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86")
+### [gradle依赖的统一管理](https://github.com/hacket/gradle-config/tree/master/tips/05_gradle%E4%BE%9D%E8%B5%96%E7%9A%84%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86 "https://github.com/hacket/gradle-config/tree/master/05_gradle%E4%BE%9D%E8%B5%96%E7%9A%84%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86")
 
-### [加速gradle编译](https://github.com/hacket/gradle-config/tree/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91 "https://github.com/hacket/gradle-config/tree/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91")
+### [加速gradle编译](https://github.com/hacket/gradle-config/tree/master/tips/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91 "https://github.com/hacket/gradle-config/tree/master/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91")
 
 
 ## Gradle插件
@@ -65,5 +65,23 @@ private String getGitLog(int pre) {
 }
 ```
 
-**效果图：** <br/>
+**打包发送到钉钉消息效果图：** <br/>
 <img src="https://github.com/hacket/gradle-tips/blob/master/imgs/dingtalk_pgyer.jpg" width="385px" height="928px">
+
+
+### module_dependency_switch
+组件化过程中，module和aar切换
+
+配置`module_dependency.json`：
+```
+{
+    "useModule": true,
+    "module_name": "Modularization1",
+    "module_dir": "Modularization1",
+    "module_group": "me.hacket:Modularization1"
+}
+```
+- useModule true表示module依赖，false表示aar依赖
+- module_name module的name
+- module_dir module路径
+- module_group module对应的远端aar的group和artifactId
