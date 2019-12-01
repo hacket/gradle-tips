@@ -5,11 +5,11 @@ ext {
 
     android =
             [
-                    compileSdkVersion: 23,
-                    buildToolsVersion: "23.0.2",
+                    compileSdkVersion: 31,
+                    buildToolsVersion: "31.0.0",
                     applicationId    : "com.example.configgradle",
-                    minSdkVersion    : 14,
-                    targetSdkVersion : 23,
+                    minSdkVersion    : 21,
+                    targetSdkVersion : 31,
                     versionCode      : 1,
                     versionName      : "1.0.0"
             ]

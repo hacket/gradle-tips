@@ -1,15 +1,19 @@
-apply plugin: 'com.android.application'
+import me.hacket.config.Deps
+import me.hacket.config.Versions
+
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
 
         multiDexEnabled true
     }
@@ -35,11 +39,14 @@ android {
     println "project.name-->" + project.name // app
     println "project.path-->" + project.path // :app  --项目绝对路径
     println "project.description-->" + project.description // null  --项目描述
-    println "project.projectDir-->" + project.projectDir // D:\workspace_studio\gradle-config\app  --包含生成脚本的目录
-    println "project.buildDir-->" + project.buildDir // D:\workspace_studio\gradle-config\app\build  --build目录
-    println "project.ant-->" + project.ant // org.gradle.api.internal.project.DefaultAntBuilder@372f10ce  --AntBuilder实例
+    println "project.projectDir-->" + project.projectDir
+    // D:\workspace_studio\gradle-config\app  --包含生成脚本的目录
+    println "project.buildDir-->" + project.buildDir
+    // D:\workspace_studio\gradle-config\app\build  --build目录
+    println "project.ant-->" + project.ant
+    // org.gradle.api.internal.project.DefaultAntBuilder@372f10ce  --AntBuilder实例
 
-   // Android for gradle自带变量
+    // Android for gradle自带变量
     println '[rootDir]' + rootDir // D:\workspace_studio\gradle-config
     println '[buildDir]' + buildDir  // D:\workspace_studio\gradle-config\app\build
     println '[projectDir]' + projectDir // D:\workspace_studio\gradle-config\app
@@ -53,7 +60,8 @@ android {
     println '[sdk.ndk]:' + project.hasProperty("sdk.ndk") // true
     println '[sdk.hacket]:' + project.hasProperty("sdk.hacket") // false
     // 使用project.properties['sdk.dir']进行key值的value引用
-    println '[sdk.dir]:' + project.getProperties().get("sdk.dir") // [sdk.dir]:D:\adt-bundle-windows-x86_64-20140702\sdk
+    println '[sdk.dir]:' + project.getProperties().get("sdk.dir")
+    // [sdk.dir]:D:\adt-bundle-windows-x86_64-20140702\sdk
 }
 
 tasks.whenTaskAdded { task ->
@@ -69,11 +77,11 @@ task wrapper(type: Wrapper) {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.dependencies['appcompat-v7']
-    implementation rootProject.ext.dependencies['design']
-    implementation rootProject.ext.dependencies['recyclerview-v7']
-    implementation rootProject.ext.dependencies['butterknife']
-    implementation rootProject.ext.dependencies['multidex']
+    implementation Deps.Kotlin.ktxCore
+    implementation Deps.AndroidX.appcompat
+    implementation Deps.AndroidX.recyclerview
+    implementation Deps.AndroidX.constraintLayout
+    implementation Deps.AndroidX.multidex
 
 //    implementation 'me.hacket:Modularization1:1.0.0'
 //    implementation 'me.hacket:Modularization2:1.0.0'

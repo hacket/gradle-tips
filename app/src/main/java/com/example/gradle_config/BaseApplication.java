@@ -1,6 +1,6 @@
 package com.example.gradle_config;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 public class BaseApplication extends MultiDexApplication {
 
