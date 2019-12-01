@@ -2,13 +2,13 @@
   {
     "useModule": true,
     "module_name": "Modularization1",
-    "module_dir": "Modularization1",
+    "module_dir": "",
     "module_group": "me.hacket:Modularization1"
   },
   {
     "useModule": true,
     "module_name": "Modularization2",
-    "module_dir": "Modularization2",
+    "module_dir": "",
     "module_group": "me.hacket:Modularization2"
   }
 ]

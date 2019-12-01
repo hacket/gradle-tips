@@ -16,7 +16,10 @@ def includeAndSwitchModuleDep() {
         objList.forEach {
             if (it.useModule) {
                 include ":${it.module_name}"
-                project(":${it.module_name}").projectDir = file(it.module_dir)
+                if (it.module_dir == null || it.module_dir == "") {
+                } else {
+                    project(":${it.module_name}").projectDir = file("${rootDir}/${it.module_dir}")
+                }
             }
         }
         // aar依赖 与 module依赖 动态切换
