@@ -1,0 +1,40 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+
+dependencies {
+    implementation gradleApi()
+
+}
+
+gradlePlugin {
+    plugins {
+        version {
+            // 在 app 模块需要通过 id 引用这个插件
+            id = "me.hacket.config"
+            // 实现这个插件的类的路径
+            implementationClass = "me.hacket.deps.VersionPlugin"
+        }
+    }
+}
+afterEvaluate {
+    publishing {
+        publications {
+            repo(MavenPublication) {
+                from components.java
+                groupId = "me.hacket"
+                artifactId = "composingbuild"
+                version = "1.0.0"
+            }
+        }
+        repositories {
+//        mavenLocal()
+            maven {
+                url = "${rootDir}/repo"
+            }
+        }
+    }
+}

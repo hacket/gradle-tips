@@ -77,6 +77,8 @@ task wrapper(type: Wrapper) {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':ComposingBuildTest')
+
     implementation Deps.Kotlin.ktxCore
     implementation Deps.AndroidX.appcompat
     implementation Deps.AndroidX.recyclerview

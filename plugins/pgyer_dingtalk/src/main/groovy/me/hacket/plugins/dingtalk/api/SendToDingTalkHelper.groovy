@@ -1,7 +1,7 @@
 package me.hacket.plugins.dingtalk.api
 
+import me.hacket.plugins.utils.Utils
 import okhttp3.*
-import qsbk.app.plugins.utils.Utils
 
 import java.util.concurrent.TimeUnit
 

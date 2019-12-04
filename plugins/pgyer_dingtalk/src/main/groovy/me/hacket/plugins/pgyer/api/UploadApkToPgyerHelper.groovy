@@ -7,8 +7,6 @@ import java.util.concurrent.TimeUnit
 
 /**
  * https://www.pgyer.com/doc/view/api#uploadApp
- *
- * Created by zengfansheng at 2021/8/4
  */
 class UploadApkToPgyerHelper {
 

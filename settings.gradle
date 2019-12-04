@@ -1,5 +1,9 @@
-include ':app', ':mylib'
+includeBuild("includedBuild")
+
+include ':app', ':mylib', 'ComposingBuildTest'
 include ':pgyer_dingtalk'
+project(':pgyer_dingtalk').projectDir = new File('./plugins/pgyer_dingtalk/')
+
 
 try {
     apply from: "$rootDir/plugins/switch_module_dependency/module_dependency.gradle"

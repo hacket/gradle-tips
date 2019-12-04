@@ -27,19 +27,21 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 }
 
-publishing {
-    publications {
-        Production(MavenPublication) {
-            from components.java
-            groupId = "qsbk.app"
-            artifactId = "pgyer_dingtalk"
-            version = "2.0.0"
+afterEvaluate {
+    publishing {
+        publications {
+            repo(MavenPublication) {
+                from components.java
+                groupId = "qsbk.app"
+                artifactId = "pgyer_dingtalk"
+                version = "2.0.0"
+            }
         }
-    }
-    repositories {
+        repositories {
 //        mavenLocal()
-        maven {
-            url = "${rootDir}/repo"
+            maven {
+                url = "${rootDir}/repo"
+            }
         }
     }
 }

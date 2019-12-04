@@ -4,8 +4,6 @@ package me.hacket.plugins.pgyer.api
  * 蒲公英POST参数
  *
  * https://www.pgyer.com/doc/view/api#uploadApp
- *
- * Created by zengfansheng at 2021/8/2
  */
 class PgyerRequest {
 

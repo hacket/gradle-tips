@@ -14,6 +14,7 @@
 
 ### [加速gradle编译](tips/06_%E5%8A%A0%E9%80%9Fgradle%E7%BC%96%E8%AF%91)
 
+### [buildSrc 和 Composing Build](tips/buildSrc_composingbuild)
 
 ## Gradle插件
 
