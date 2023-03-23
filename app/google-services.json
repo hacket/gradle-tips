@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "441034490221",
+    "project_id": "gradletips",
+    "storage_bucket": "gradletips.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441034490221:android:a60f3cb92680a6a2005a64",
+        "android_client_info": {
+          "package_name": "me.hacket.assistant.samples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441034490221-h2ufsorkldm18fclcgi7dmnhsshq1ag5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.hacket.assistant.samples",
+            "certificate_hash": "8a1aa4bb088dafd4411eac5db83ff967954b6e5f"
+          }
+        },
+        {
+          "client_id": "441034490221-9qdgg8gar12lm6f8kme1jvhfhr0ofkk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_VHoEYZZdoPL65iiv6R-VgGhrB-0dA1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441034490221-9qdgg8gar12lm6f8kme1jvhfhr0ofkk2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

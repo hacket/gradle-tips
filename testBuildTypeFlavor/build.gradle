@@ -54,11 +54,19 @@ dependencies {
     debugImplementation "com.tencent.bugly:crashreport:3.4.4"
     debugImplementation "com.tencent.bugly:nativecrashreport:3.9.0"
 
+
+
+    // Add the dependencies for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
+
     // https://firebase.google.com/docs/crashlytics/get-started?authuser=0&hl=zh&platform=android#add-sdk
     // Import the BoM for the Firebase platform
     releaseImplementation platform('com.google.firebase:firebase-bom:31.2.3')
     // Add the dependencies for the Crashlytics and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
     releaseImplementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
     releaseImplementation 'com.google.firebase:firebase-analytics-ktx'
 }
