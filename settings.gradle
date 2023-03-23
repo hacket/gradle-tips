@@ -1,12 +1,14 @@
 includeBuild("includedBuild")
 
-include ':app', ':mylib', 'ComposingBuildTest'
-include ':pgyer_dingtalk'
-project(':pgyer_dingtalk').projectDir = new File('./plugins/pgyer_dingtalk/')
+include ':app'
+//include ':mylib', 'ComposingBuildTest'
+//include ':pgyer_dingtalk'
+//project(':pgyer_dingtalk').projectDir = new File('./plugins/pgyer_dingtalk/')
 
+include ':testBuildTypeFlavor'
 
-try {
-    apply from: "$rootDir/plugins/switch_module_dependency/module_dependency.gradle"
-} catch (Exception e) {
-    e.printStackTrace()
-}
+//try {
+//    apply from: "$rootDir/plugins/switch_module_dependency/module_dependency.gradle"
+//} catch (Exception e) {
+//    e.printStackTrace()
+//}

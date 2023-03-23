@@ -1,0 +1,64 @@
+import me.hacket.config.Versions
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk Versions.compileSdkVersion
+
+    defaultConfig {
+        minSdk  Versions.minSdkVersion
+        targetSdk Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+        // 华为渠道
+        huawei {
+            dimension "app"
+            getIsDefault().set(true) // that does the magic
+            //编译渠道( CHANNEL_GOOGLE, CHANNEL_HW )
+            buildConfigField "String", "BUILD_CHANNEL", '"CHANNEL_HW"'
+        }
+        // Google Play渠道
+        google {
+            dimension "app"
+            /* ###支付渠道### 编译时不需要，仅运行调试时需开放对应渠道 */
+            buildConfigField "String", "BUILD_CHANNEL", '"CHANNEL_GOOGLE"'
+        }
+    }
+}
+
+dependencies {
+    debugImplementation "com.tencent.bugly:crashreport:3.4.4"
+    debugImplementation "com.tencent.bugly:nativecrashreport:3.9.0"
+
+    // https://firebase.google.com/docs/crashlytics/get-started?authuser=0&hl=zh&platform=android#add-sdk
+    // Import the BoM for the Firebase platform
+    releaseImplementation platform('com.google.firebase:firebase-bom:31.2.3')
+    // Add the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    releaseImplementation 'com.google.firebase:firebase-crashlytics-ktx'
+    releaseImplementation 'com.google.firebase:firebase-analytics-ktx'
+}

@@ -6,22 +6,53 @@ plugins {
 }
 
 android {
-    compileSdkVersion Versions.compileSdkVersion
+    compileSdk Versions.compileSdkVersion
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
+        minSdk  Versions.minSdkVersion
+        targetSdk Versions.targetSdkVersion
         versionCode Versions.versionCode
         versionName Versions.versionName
 
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            storeFile file("${rootDir}/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        debug {
+            storeFile file("${rootDir}/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
+            debuggable false
+            jniDebuggable false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), "proguard-rules.pro"
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            jniDebuggable true
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), "proguard-rules.pro"
         }
     }
 
@@ -62,6 +93,24 @@ android {
     // 使用project.properties['sdk.dir']进行key值的value引用
     println '[sdk.dir]:' + project.getProperties().get("sdk.dir")
     // [sdk.dir]:D:\adt-bundle-windows-x86_64-20140702\sdk
+
+    flavorDimensions "app"
+
+    productFlavors {
+        // 华为渠道
+        huawei {
+            dimension "app"
+            getIsDefault().set(true) // that does the magic
+            //编译渠道( CHANNEL_GOOGLE, CHANNEL_HW )
+            buildConfigField "String", "BUILD_CHANNEL", '"CHANNEL_HW"'
+        }
+        // Google Play渠道
+        google {
+            dimension "app"
+            /* ###支付渠道### 编译时不需要，仅运行调试时需开放对应渠道 */
+            buildConfigField "String", "BUILD_CHANNEL", '"CHANNEL_GOOGLE"'
+        }
+    }
 }
 
 tasks.whenTaskAdded { task ->
@@ -70,14 +119,10 @@ tasks.whenTaskAdded { task ->
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.8'
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':ComposingBuildTest')
+//    implementation project(':ComposingBuildTest')
 
     implementation Deps.Kotlin.ktxCore
     implementation Deps.AndroidX.appcompat
@@ -87,4 +132,6 @@ dependencies {
 
 //    implementation 'me.hacket:Modularization1:1.0.0'
 //    implementation 'me.hacket:Modularization2:1.0.0'
+
+    implementation project(':testBuildTypeFlavor')
 }
