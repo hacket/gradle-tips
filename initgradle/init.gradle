@@ -7,7 +7,7 @@ def fresco_version = '2.6.0'
 
 def DEBUG_TOOLS_DEP = "me.hacket:debugtools:1.0.2"
 
-println(purpleText("init.gradle MAVEN_TOOLS_URL=$MAVEN_TOOLS_URL, needResolutionStrategy_kotlin=$needResolutionStrategy_kotlin, needResolutionStrategy_okhttp=$needResolutionStrategy_okhttp, kotlin_version=$kotlin_version, okhttp_version=$okhttp_version"))
+println(purpleText("init.gradle, needResolutionStrategy_kotlin=$needResolutionStrategy_kotlin, needResolutionStrategy_okhttp=$needResolutionStrategy_okhttp, kotlin_version=$kotlin_version, okhttp_version=$okhttp_version"))
 
 def repoConfig = { // Closure
 
