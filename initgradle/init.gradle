@@ -61,8 +61,8 @@ def repoConfig = { // Closure
 }
 
 // gradle脚本依赖仓库
-gradle.projectsLoaded {
-    rootProject.buildscript { p ->
+gradle.projectsLoaded { p ->
+    rootProject.buildscript {
         println(yellowText("${p.name}. init.gradle buildscript"))
         repositories repoConfig
     }
