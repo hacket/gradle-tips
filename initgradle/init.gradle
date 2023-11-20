@@ -1,0 +1,122 @@
+def needResolutionStrategy_kotlin = true
+def needResolutionStrategy_okhttp = true
+def needResolutionStrategy_fresco = true
+def kotlin_version = '1.5.10'
+def okhttp_version = '3.14.9'
+def fresco_version = '2.6.0'
+
+def DEBUG_TOOLS_DEP = "me.hacket:debugtools:1.0.2"
+
+println(purpleText("init.gradle MAVEN_TOOLS_URL=$MAVEN_TOOLS_URL, needResolutionStrategy_kotlin=$needResolutionStrategy_kotlin, needResolutionStrategy_okhttp=$needResolutionStrategy_okhttp, kotlin_version=$kotlin_version, okhttp_version=$okhttp_version"))
+
+def repoConfig = { // Closure
+
+    mavenLocal()
+
+    // all { ArtifactRepository repo ->
+    //     if (repo instanceof MavenArtifactRepository) {
+    //         def url = repo.url.toString()
+    //         if (url.contains('repo1.maven.org/maven2') || url.contains('jcenter.bintray.com')) {
+    //             println "gradle init: (${repo.name}: ${repo.url}) removed"
+    //             remove repo
+    //         }
+    //     }
+    // }
+
+    // 具体对应见：https://developer.aliyun.com/mvn/guide
+    // 使用阿国内阿里云的依赖下载地址替换Google依赖包下载地址
+
+    // central （源地址：https://repo1.maven.org/maven2/）
+    maven {
+        url 'https://maven.aliyun.com/repository/central'
+        allowInsecureProtocol = true
+    }
+    //    Could not find flipper-leakcanary-plugin-0.183.0.jar (com.facebook.flipper:flipper-leakcanary-plugin:0.183.0).
+    //        Searched in the following locations:
+    //            https://maven.aliyun.com/repository/central/com/facebook/flipper/flipper-leakcanary-plugin/0.183.0/flipper-leakcanary-plugin-0.183.0.jar
+
+    // jcenter http://jcenter.bintray.com/
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+        allowInsecureProtocol = true
+    }
+    // jcenter/public central仓和jcenter仓的聚合仓
+    maven {
+        url 'https://maven.aliyun.com/repository/public'
+        allowInsecureProtocol = true
+    }
+//    google https://maven.google.com/
+    maven {
+        url 'https://maven.aliyun.com/repository/google/'
+        allowInsecureProtocol = true
+    }
+    // gradle-plugin https://plugins.gradle.org/m2/
+    maven {
+        url 'https://maven.aliyun.com/repository/gradle-plugin'
+        allowInsecureProtocol = true
+    }
+
+    google()
+    mavenCentral()
+}
+
+// gradle脚本依赖仓库
+gradle.projectsLoaded {
+    rootProject.buildscript {
+        println(yellowText("${p.name}. init.gradle buildscript"))
+        repositories repoConfig
+    }
+}
+
+// 项目依赖仓库
+allprojects { project ->
+
+    repositories repoConfig
+
+    project.afterEvaluate { p ->
+        if (p.name == 'buildSrc') {
+            // 过滤掉buildSrc不添加依赖
+            return
+        }
+        if (project.name == rootProject.name) {
+            // root build.gradle不添加依赖
+            return
+        }
+        println(yellowText("handle deps for: ${p.name}. add debugImplementation \"$DEBUG_TOOLS_DEP\""))
+        try {
+            p.getDependencies().add("debugImplementation", DEBUG_TOOLS_DEP)
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+    }
+
+    // 必须和项目的依赖冲突，编译报错
+    configurations.configureEach {
+        if (needResolutionStrategy_kotlin) {
+            // 编译错误：kotlin.jdk7.AutoCloseableKt is defined multiple times
+            resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+            resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_version}"
+            resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+            resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib-common:${kotlin_version}"
+            resolutionStrategy.force "org.jetbrains.kotlin:kotlin-stdlib-common:${kotlin_version}"
+        }
+        if (needResolutionStrategy_okhttp) {
+            // okhttp版本过高如4.9，过时的api会让编译不通过的
+            resolutionStrategy.force "com.squareup.okhttp3:okhttp:${okhttp_version}"
+            resolutionStrategy.force "com.squareup.okhttp3:okhttp-urlconnection:${okhttp_version}"
+            resolutionStrategy.force "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
+        }
+
+        if (needResolutionStrategy_fresco) {
+            resolutionStrategy.force "com.facebook.fresco:imagepipeline-base:${fresco_version}"
+        }
+    }
+}
+
+static String purpleText(String text) {
+    return "\u001B[35m ${text} \u001B[0m"
+}
+
+static String yellowText(String text) {
+    return "\u001B[33m ${text} \u001B[0m"
+}
